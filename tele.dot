@@ -5,10 +5,12 @@ digraph G {
     labelfloat = True
 
     # impair : CT : lightblue1
-    # pair : EK : moccasin
-
+    # pair : EK : navajowhite1
+    # h20 : lightyellow3
 
     "connect0000" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+    prplvs1 [shape = box3d, style=filled, fillcolor="lightblue1" ]
+    prplvs2 [shape = box3d, style=filled, fillcolor="navajowhite1" ]
     prplvs1 -> "connect0000" [dir=none, shape=rectangle,style=filled,label="",height=.1,width=.4] ;
     prplvs2 -> "connect0000" [dir=none, shape=rectangle,style=filled,label="",height=.1,width=.4] ;
     connect0000 -> pmdtelprdweb01 [ dir=none, weight=1 ] ;
@@ -32,6 +34,9 @@ digraph G {
     connect0000 -> pmdoneppdweb01 [ dir=none, weight=1 ] ;
     connect0000 -> pmdoneppdweb02 [ dir=none, weight=1 ] ;
 
+    connect0000 -> pmdptvprdweb01 [ dir=none, weight=1 ] ;
+    connect0000 -> pmdptvprdweb02 [ dir=none, weight=1 ] ;
+
     subgraph cluster_tel {
         label = "Marque tel";
         color = orange;
@@ -48,13 +53,18 @@ digraph G {
             mrtprdtelfo4  -> "connect0002" [ dir=none, weight=1 ] ;
             "connect0002" -> pmdtelprdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
 
-            "connect0003" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
-            mrtprdtelbo1  -> "connect0003" [ dir=none, weight=1 ] ;
-            mrtprdtelbo2  -> "connect0003" [ dir=none, weight=1 ] ;
-            "connect0003" -> pmdtelprdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+            connect0003 [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+            mrtprdtelbo1 -> "connect0003" [ dir=none, weight=1 ] ;
+            mrtprdtelbo2 -> "connect0003" [ dir=none, weight=1 ] ;
+            connect0003 -> pmdtelprdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+
+            connect0005 [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+            pmdptvprdweb01 -> "connect0005" [ dir=none, weight=1 ] ;
+            pmdptvprdweb02 -> "connect0005" [ dir=none, weight=1 ] ;
+            connect0005 -> pmdtelprdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
 
             subgraph cluster_tel_pmd_prod {
-                label = "Prod pmd";
+                label = "pmd";
                 color = blue;
 
                 "connect0001" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
@@ -66,42 +76,52 @@ digraph G {
                 subgraph cluster_tel_pmd_prod_fr {
                     label = "front pmd";
                     pmdtelprdweb01 [ shape = box3d, style=filled, fillcolor="lightblue1" ] 
-                    pmdtelprdweb02 [ shape = box3d, style=filled, fillcolor="moccasin" ]
+                    pmdtelprdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
                  }
 
                 subgraph cluster_tel_prod_pmd_bdd {
                     label = "bdd pmd";
-                    pmdtelprdbdd01 [ shape = box3d, style=filled, fillcolor="moccasin" ]
+                    pmdtelprdbdd01 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
                     pmdtelprdbdd02 [ shape = box3d, style=filled, fillcolor="lightblue1" ]
                 }
             }
 
 
             subgraph cluster_tel_mrt_prod {
-                label = "Prod mrt";
+                label = "mrt";
                 
                 subgraph cluster_tel_mrt_prod_fr {
                     label = "front mrt";
-                    mrtprdtelfo1 [ shape = box3d, style=filled, fillcolor="moccasin" ] ;
+                    mrtprdtelfo1 [ shape = box3d, style=filled, fillcolor="navajowhite1" ] ;
                     mrtprdtelfo2 [ shape = box3d, style=filled, fillcolor="lightblue1" ] ;
-                    mrtprdtelfo3 [ shape = box3d, style=filled, fillcolor="moccasin" ] ;
+                    mrtprdtelfo3 [ shape = box3d, style=filled, fillcolor="navajowhite1" ] ;
                     mrtprdtelfo4 [ shape = box3d, style=filled, fillcolor="lightblue1" ] ;
                 }
 
                 subgraph cluster_tel_mrt_prod_bo {
                     label = "Back office mrt";
-                    mrtprdtelbo1 [ shape = box3d, style=filled, fillcolor="moccasin" ] 
+                    mrtprdtelbo1 [ shape = box3d, style=filled, fillcolor="navajowhite1" ] 
                     mrtprdtelbo2 [ shape = box3d, style=filled, fillcolor="lightblue1" ]
                 }
             }
 
             subgraph cluster_tel_one_prod {
-                label = "Prod one";
+                label = "one";
                 
                 subgraph cluster_tel_one_fr {
                     label = "front one";
                     pmdoneprdweb01 [ shape = box3d, style=filled, fillcolor="lightblue1" ] 
-                    pmdoneprdweb02 [ shape = box3d, style=filled, fillcolor="mocassin" ]
+                    pmdoneprdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
+                }
+            }
+            subgraph cluster_tel_ptv_prod {
+                label = "ptv";
+                
+                subgraph cluster_tel_ptv_fr {
+                    label = "front ptv";
+                    # sur h2op051
+                    pmdptvprdweb01 [ shape = box3d, style=filled, fillcolor="lightyellow3", label="pmdptvprdweb01\n sur h2o" ] 
+                    pmdptvprdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
                 }
             }
         }
@@ -122,29 +142,30 @@ digraph G {
             "connect0004" -> pmdtelppdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
 
             subgraph cluster_tel_pmd_preprod {
-                label = "Préproduction pmd";
+                label = "pmd";
                 color = grey;
-                pmdtelppdweb01 [ shape = box3d ];
+                pmdtelppdweb01 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
                 subgraph cluster_tel_pmd_preprod_bdd {
-                    label = "Préproduction pmd bdd";
+                    label = "pmd bdd";
                     color = grey;
-                    pmdtelppdbdd01 [ shape = box3d ];
+                    pmdtelppdbdd01 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
                 }
             }
          
             subgraph cluster_tel_mrt_preprod {
-                label = "Préproduction mrt";
+                label = "mrt";
                 color = grey;
-                mrtrcttelfo1 [ shape = box3d ];
-                mrtrcttelfo2 [ shape = box3d ];
-                mrtrcttelbo1 [ shape = box3d ];
+                mrtrcttelfo1 [ shape = box3d, style=filled, fillcolor="lightblue1" ];
+                mrtrcttelfo2 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
+                mrtrcttelbo1 [ shape = box3d, style=filled, fillcolor="lightblue1" ];
+                # ??? ckoa
                 mrtrcttelbo2 [ shape = box3d ];
             }
             subgraph cluster_tel_one_preprod {
-                label = "Préproduction one";
+                label = "one";
                 color = grey;
-                pmdoneppdweb01 [ shape = box3d ];
-                pmdoneppdweb02 [ shape = box3d ];
+                pmdoneppdweb01 [ shape = box3d, style=filled, fillcolor="lightblue1" ];
+                pmdoneppdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
             }
         }
     }
