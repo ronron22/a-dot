@@ -1,0 +1,81 @@
+digraph G {
+    style=bold;
+    label="Localisation des hyperviseur Prisma"
+    fontsize = 20
+
+    # impair : CT : lightblue1
+    # pair : EK : navajowhite1
+    # h20 : lightyellow3
+
+
+    subgraph cluster_CT {
+        label = "CT";
+        fillcolor="lightblue1";
+        style="filled";
+        fontsize = 15
+        
+        subgraph cluster_CT_PMDHYP1 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp1 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP3 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp3 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP6 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp6 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP8 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp8 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP10 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp10 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMD_RCT_HYP02 {
+            fillcolor="white";
+            style="filled";
+            "pmd-rct-hyp02" [ shape = box3d, ] ;
+        }
+    }
+
+    subgraph cluster_EK {
+        label = "EK";
+        fillcolor="orange";
+        style="filled";
+        fontsize = 15
+        
+        subgraph cluster_CT_PMDHYP4 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp4 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP5 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp5 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP7 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp7 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMDHYP9 {
+            fillcolor="white";
+            style="filled";
+            pmdhyp9 [ shape = box3d, ] ;
+        }
+        subgraph cluster_CT_PMD_RCT_HYP01 {
+            fillcolor="white";
+            style="filled";
+            "pmd-rct-hyp01" [ shape = box3d, ] ;
+        }
+    }
+}
