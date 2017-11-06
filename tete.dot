@@ -1,0 +1,172 @@
+digraph G {
+    style=bold;
+    label="TETE"
+    fontsize = 20
+    labelfloat = True
+
+    # impair : CT : lightblue1
+    # pair : EK : navajowhite1
+    # h20 : lightyellow3
+
+    "connect0000" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+    plvs1 [shape = box3d, style=filled, fillcolor="lightblue1" ]
+    plvs2 [shape = box3d, style=filled, fillcolor="navajowhite1" ]
+    plvs1 -> "connect0000" [dir=none, shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+    plvs2 -> "connect0000" [dir=none, shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+    connect0000 -> pmttelptdweb01 [ dir=none, weight=1 ] ;
+    connect0000 -> pmttelptdweb02 [ dir=none, weight=1 ] ;
+
+    connect0000 -> mtrptdtelpo1 [ dir=none, weight=1 ] ;
+    connect0000 -> mtrptdtelpo2 [ dir=none, weight=1 ] ;
+    connect0000 -> mtrptdtelfo3 [ dir=none, weight=1 ] ;
+    connect0000 -> mtrptdtelfo4 [ dir=none, weight=1 ] ;
+
+    connect0000 -> mtrrcttelpo1 [ dir=none, weight=1 ] ;
+    connect0000 -> mtrrcttelpo2 [ dir=none, weight=1 ] ;
+    connect0000 -> mtrrcttelbo1 [ dir=none, weight=1 ] ;
+    connect0000 -> mtrrcttelbo2 [ dir=none, weight=1 ] ;
+
+    connect0000 -> pmtoneptdweb01 [ dir=none, weight=1 ] ;
+    connect0000 -> pmtoneptdweb02 [ dir=none, weight=1 ] ;
+
+    connect0000 -> pmttelpvdweb01 [ dir=none, weight=1 ] ;
+
+    connect0000 -> pmtonepvdweb01 [ dir=none, weight=1 ] ;
+    connect0000 -> pmtonepvdweb02 [ dir=none, weight=1 ] ;
+
+    connect0000 -> pmtptvptdweb01 [ dir=none, weight=1 ] ;
+    connect0000 -> pmtptvptdweb02 [ dir=none, weight=1 ] ;
+
+    subgraph cluster_tel {
+        label = "Marque tel";
+        color = orange;
+        fontsize = 15
+        
+        subgraph cluster_tel_prod {
+            label = "Production";
+            color = blue;
+
+            "connect0002" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+            mtrptdtelpo1  -> "connect0002" [ dir=none, weight=1 ] ;
+            mtrptdtelpo2  -> "connect0002" [ dir=none, weight=1 ] ;
+            mtrptdtelfo3  -> "connect0002" [ dir=none, weight=1 ] ;
+            mtrptdtelfo4  -> "connect0002" [ dir=none, weight=1 ] ;
+            "connect0002" -> pmttelptdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+
+            connect0003 [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+            mtrptdtelbo1 -> "connect0003" [ dir=none, weight=1 ] ;
+            mtrptdtelbo2 -> "connect0003" [ dir=none, weight=1 ] ;
+            connect0003 -> pmttelptdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+
+            connect0005 [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+            pmtptvptdweb01 -> "connect0005" [ dir=none, weight=1 ] ;
+            pmtptvptdweb02 -> "connect0005" [ dir=none, weight=1 ] ;
+            connect0005 -> pmttelptdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+
+            subgraph cluster_tel_pmt_prod {
+                label = "pmt";
+                color = blue;
+
+                "connect0001" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+                pmttelptdweb01  -> "connect0001" [ dir=none, weight=1 ] ;
+                pmttelptdweb02  -> "connect0001" [ dir=none, weight=1 ] ;
+                "connect0001" -> pmttelptdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+                pmttelptdbdd01 -> pmttelptdbdd02 [ dir=none, fontsize = 10, color=red, label = "répli sql" ]
+
+                subgraph cluster_tel_pmt_prod_fr {
+                    label = "front pmt";
+                    pmttelptdweb01 [ shape = box3d, style=filled, fillcolor="lightblue1" ] 
+                    pmttelptdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
+                 }
+
+                subgraph cluster_tel_prod_pmt_bdd {
+                    label = "bdd pmt";
+                    pmttelptdbdd01 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
+                    pmttelptdbdd02 [ shape = box3d, style=filled, fillcolor="lightblue1" ]
+                }
+            }
+
+
+            subgraph cluster_tel_mtr_prod {
+                label = "mtr";
+                
+                subgraph cluster_tel_mtr_prod_fr {
+                    label = "front mtr";
+                    mtrptdtelpo1 [ shape = box3d, style=filled, fillcolor="navajowhite1" ] ;
+                    mtrptdtelpo2 [ shape = box3d, style=filled, fillcolor="lightblue1" ] ;
+                    mtrptdtelfo3 [ shape = box3d, style=filled, fillcolor="navajowhite1" ] ;
+                    mtrptdtelfo4 [ shape = box3d, style=filled, fillcolor="lightblue1" ] ;
+                }
+
+                subgraph cluster_tel_mtr_prod_bo {
+                    label = "Back office mtr";
+                    mtrptdtelbo1 [ shape = box3d, style=filled, fillcolor="navajowhite1" ] 
+                    mtrptdtelbo2 [ shape = box3d, style=filled, fillcolor="lightblue1" ]
+                }
+            }
+
+            subgraph cluster_tel_one_prod {
+                label = "one";
+                
+                subgraph cluster_tel_one_fr {
+                    label = "front one";
+                    pmtoneptdweb01 [ shape = box3d, style=filled, fillcolor="lightblue1" ] 
+                    pmtoneptdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
+                }
+            }
+            subgraph cluster_tel_ptv_prod {
+                label = "ptv";
+                
+                subgraph cluster_tel_ptv_fr {
+                    label = "front ptv";
+                    # sur h2op051
+                    pmtptvptdweb01 [ shape = box3d, style=filled, fillcolor="lightyellow3", label="pmtptvptdweb01\n sur h2o" ] 
+                    pmtptvptdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ]
+                }
+            }
+        }
+
+
+         subgraph cluster_tel_preprod {
+            label = "Préproduction";
+            color = grey;
+
+            "connect0004" [shape=rectangle,style=filled,label="",height=.1,width=.4] ;
+            pmttelpvdweb01  -> "connect0004" [ dir=none, weight=1 ] ;
+            mtrrcttelpo1  -> "connect0004" [ dir=none, weight=1 ] ;
+            mtrrcttelpo2  -> "connect0004" [ dir=none, weight=1 ] ;
+            mtrrcttelbo1  -> "connect0004" [ dir=none, weight=1 ] ;
+            mtrrcttelbo2  -> "connect0004" [ dir=none, weight=1 ] ;
+            pmtonepvdweb01  -> "connect0004" [ dir=none, weight=1 ] ;
+            pmtonepvdweb02  -> "connect0004" [ dir=none, weight=1 ] ;
+            "connect0004" -> pmttelpvdbdd01 [ dir=none, fontsize = 10, label = "flux sql" ]
+
+            subgraph cluster_tel_pmt_preprod {
+                label = "pmt";
+                color = grey;
+                pmttelpvdweb01 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
+                subgraph cluster_tel_pmt_preprod_bdd {
+                    label = "pmt bdd";
+                    color = grey;
+                    pmttelpvdbdd01 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
+                }
+            }
+         
+            subgraph cluster_tel_mtr_preprod {
+                label = "mtr";
+                color = grey;
+                mtrrcttelpo1 [ shape = box3d, style=filled, fillcolor="lightblue1" ];
+                mtrrcttelpo2 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
+                mtrrcttelbo1 [ shape = box3d, style=filled, fillcolor="lightblue1" ];
+                # ??? ckoa
+                mtrrcttelbo2 [ shape = box3d ];
+            }
+            subgraph cluster_tel_one_preprod {
+                label = "one";
+                color = grey;
+                pmtonepvdweb01 [ shape = box3d, style=filled, fillcolor="lightblue1" ];
+                pmtonepvdweb02 [ shape = box3d, style=filled, fillcolor="navajowhite1" ];
+            }
+        }
+    }
+}
