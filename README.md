@@ -1,4 +1,4 @@
-# aw-dot
+# a-dot
 
 Howto use graphviz for building computer schema
 
