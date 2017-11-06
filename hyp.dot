@@ -1,6 +1,6 @@
 digraph G {
     style=bold;
-    label="Localisation des hyperviseur Prisma"
+    label="Localisation des hyperviseur psma"
     fontsize = 20
 
     # impair : CT : lightblue1
@@ -14,35 +14,35 @@ digraph G {
         style="filled";
         fontsize = 15
         
-        subgraph cluster_CT_PMDHYP1 {
+        subgraph cluster_CT_PMTHYP1 {
             fillcolor="white";
             style="filled";
-            pmdhyp1 [ shape = box3d, ] ;
+            pmthyp1 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP3 {
+        subgraph cluster_CT_PMTHYP3 {
             fillcolor="white";
             style="filled";
-            pmdhyp3 [ shape = box3d, ] ;
+            pmthyp3 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP6 {
+        subgraph cluster_CT_PMTHYP6 {
             fillcolor="white";
             style="filled";
-            pmdhyp6 [ shape = box3d, ] ;
+            pmthyp6 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP8 {
+        subgraph cluster_CT_PMTHYP8 {
             fillcolor="white";
             style="filled";
-            pmdhyp8 [ shape = box3d, ] ;
+            pmthyp8 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP10 {
+        subgraph cluster_CT_PMTHYP10 {
             fillcolor="white";
             style="filled";
-            pmdhyp10 [ shape = box3d, ] ;
+            pmthyp10 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMD_RCT_HYP02 {
+        subgraph cluster_CT_PMT_RCT_HYP02 {
             fillcolor="white";
             style="filled";
-            "pmd-rct-hyp02" [ shape = box3d, ] ;
+            "pmt-rct-hyp02" [ shape = box3d, ] ;
         }
     }
 
@@ -52,30 +52,30 @@ digraph G {
         style="filled";
         fontsize = 15
         
-        subgraph cluster_CT_PMDHYP4 {
+        subgraph cluster_CT_PMTHYP4 {
             fillcolor="white";
             style="filled";
-            pmdhyp4 [ shape = box3d, ] ;
+            pmthyp4 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP5 {
+        subgraph cluster_CT_PMTHYP5 {
             fillcolor="white";
             style="filled";
-            pmdhyp5 [ shape = box3d, ] ;
+            pmthyp5 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP7 {
+        subgraph cluster_CT_PMTHYP7 {
             fillcolor="white";
             style="filled";
-            pmdhyp7 [ shape = box3d, ] ;
+            pmthyp7 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMDHYP9 {
+        subgraph cluster_CT_PMTHYP9 {
             fillcolor="white";
             style="filled";
-            pmdhyp9 [ shape = box3d, ] ;
+            pmthyp9 [ shape = box3d, ] ;
         }
-        subgraph cluster_CT_PMD_RCT_HYP01 {
+        subgraph cluster_CT_PMT_RCT_HYP01 {
             fillcolor="white";
             style="filled";
-            "pmd-rct-hyp01" [ shape = box3d, ] ;
+            "pmt-rct-hyp01" [ shape = box3d, ] ;
         }
     }
 }
