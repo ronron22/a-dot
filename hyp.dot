@@ -1,6 +1,6 @@
 digraph G {
     style=bold;
-    label="Localisation des hyperviseur psma"
+    label="Localisation des hyperviseur pma"
     fontsize = 20
 
     # impair : CT : lightblue1
